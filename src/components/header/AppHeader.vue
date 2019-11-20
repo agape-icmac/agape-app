@@ -3,24 +3,30 @@
         app
         dark
         flat
-        color="secondary"
+        color="primary"
     >
-        <v-toolbar-title>Projeto - Curso Vue</v-toolbar-title>
+        <v-toolbar-title>Agape - Igreja Automatizada</v-toolbar-title>
 
         <v-spacer />
         <v-toolbar-items v-if="$store.state.logged">
             <v-btn
                 text
+                @click="goToHome"
+            >
+                Inicio
+            </v-btn>
+            <v-btn
+                text
                 @click="goToBookList"
             >
-                Livros
+                Discipulos
             </v-btn>
             <v-btn
                 v-if="$store.state.authToken"
                 text
                 @click="goToCollection"
             >
-                Minha Coleção
+                Financeiro
             </v-btn>
             <v-btn
                 text
@@ -36,8 +42,11 @@
     export default {
         name: 'AppHeader',
         methods: {
+            goToHome() {
+                this.$router.push('/dashboard');
+            },
             goToBookList() {
-                this.$router.push('/book');
+                this.$router.push('/discipulo');
             },
             goToCollection() {
                 this.$router.push('/library');
